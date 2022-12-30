@@ -13,10 +13,10 @@ export default function TrackResults({ track, selectTrack }) {
         className="w-[72px] h-[72px] my-2"
       />
       <div className="flex flex-col ml-4">
-        <div className="">
+        <div className="font-medium">
           {track.title}
         </div>
-        <div className="text-slate-400">
+        <div className="text-slate-400 font-normal">
           {track.artist}
         </div>
       </div>
