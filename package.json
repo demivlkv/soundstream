@@ -1,5 +1,26 @@
 {
-  "dependencies": {
-    "dotenv": "^16.0.3"
-  }
+  "name": "soundstream",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "devDependencies": {
+    "concurrently": "^7.6.0"
+  },
+  "scripts": {
+    "start": "node server/server.js --ignore client",
+    "develop": "concurrently \"cd server && npm run start\" \"cd client && npm start\"",
+    "install": "cd server && npm i && cd ../client && npm i",
+    "build": "cd client && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/demivlkv/soundstream.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/demivlkv/soundstream/issues"
+  },
+  "homepage": "https://github.com/demivlkv/soundstream#readme"
 }

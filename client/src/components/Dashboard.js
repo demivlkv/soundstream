@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import SpotifyWebApi from 'spotify-web-api-node';
+import axios from 'axios';
 
 import Auth from '../utils/Auth';
 import TrackResults from './TrackResults';
@@ -14,17 +15,35 @@ export default function Dashboard({ code }) {
   const [search, setSearch] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [currentTrack, setCurrentTrack] = useState();
+  const [lyrics, setLyrics] = useState('');
 
   function selectTrack(track) {
     setCurrentTrack(track);
     setSearch('');
+    setLyrics('');
   };
 
+  // access lyrics
+  useEffect(() => {
+    if (!currentTrack) return;
+    axios.get('http://localhost:3001/lyrics', {
+      params: {
+        track: currentTrack.title,
+        artist: currentTrack.artist
+      }
+    })
+    .then(res => {
+      setLyrics(res.data.lyrics);
+    })
+  }, [currentTrack])
+
+  // get access token
   useEffect(() => {
     if (!accessToken) return;
     spotifyApi.setAccessToken(accessToken);
   }, [accessToken]);
 
+  // get search results
   useEffect(() => {
     if (!search) return setSearchResults([]);
     if (!accessToken) return;
@@ -66,14 +85,23 @@ export default function Dashboard({ code }) {
           />
         </div>
       </div>
-      {/* DISPLAY SONG LYRICS */}
-      <main className="w-full h-auto mt-[100px] p-8 bg-gray-800 text-gray-200 flex flex-col grow overflow-y-auto">
+      {/* DISPLAY SEARCH RESULTS & SONG LYRICS */}
+      <main className="w-full my-[100px] p-8 bg-gray-800 text-gray-200 flex flex-col grow overscroll-y-auto">
         {searchResults.map(track => (
-          <TrackResults track={track} key={track.uri} selectTrack={selectTrack} />
+          <TrackResults
+            track={track}
+            key={track.uri}
+            selectTrack={selectTrack}
+          />
         ))}
+        {searchResults.length === 0 && (
+          <div className="text-center whitespace-pre">
+            {lyrics}
+          </div>
+        )}
       </main>
       {/* MUSIC PLAYER */}
-      <div className="w-full h-auto bg-gray-900 text-gray-200 p-8 flex">
+      <div className="fixed bottom-0 left-0 w-full h-auto bg-gray-900 text-gray-200 p-8 flex">
         <Player accessToken={accessToken} trackUri={currentTrack?.uri} />
       </div>
     </div>
