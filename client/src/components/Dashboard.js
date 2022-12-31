@@ -55,8 +55,6 @@ export default function Dashboard({ code }) {
       // prevent search results from appearing until user stops typing
       if (cancel) return;
 
-      console.log(res.body.tracks)
-
       setSearchResults(res.body.tracks.items.map(track => {
         const smallAlbumImage = track.album.images.reduce(
           (smallest, image) => {
