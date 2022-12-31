@@ -27,7 +27,7 @@ export default function Dashboard({ code }) {
   // access lyrics
   useEffect(() => {
     if (!currentTrack) return;
-    axios.get('http://localhost:3001/lyrics', {
+    axios.get('https://soundstream.herokuapp.com/lyrics', {
       params: {
         track: currentTrack.title,
         artist: currentTrack.artist
