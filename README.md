@@ -1,5 +1,6 @@
 # soundstream
-### <p align="center">Tada~ a Spotify clone!</p>
+### <p align="center">Tada~ a Spotify clone! :notes:</p>
+<p align="center">(For API practice)</p>
 
 <p align="center">:sparkles: <a href="https://soundstream.herokuapp.com/">Visit deployed application here</a> :sparkles:</p>
 
@@ -37,7 +38,7 @@ npm run develop
 ```
 
 ## Usage
-Enter `npm run develop` at the root directory in terminal. This will start up the React app and initialize the back-end at the same time. The application will open automatically in your browser. Once the application loads, login with your [Spotify](https://open.spotify.com/) account. Search for an artist or song within the search box at the top left corner of the screen. Let the music move you.
+Enter `npm run develop` at the root directory in terminal. This will start up the React app and initialize the back-end at the same time. The application will open automatically in your browser. Once the application loads, login with your [Spotify](https://open.spotify.com/) account. Search for an artist or song within the search box at the top left corner of the screen. Let the music move you. :musical_note:
 
 ![screenshot: search results](/../main/client/src/assets/screenshots/song-search.png)
 
