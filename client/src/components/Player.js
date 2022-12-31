@@ -21,10 +21,13 @@ export default function Player({ accessToken, trackUri }) {
       styles={{
         height: 100,
         activeColor: '#1cb954',
-        bgColor: '#333',
+        bgColor: '#111417',
         color: '#fcfcfc',
-        loaderColor: '#fff',
+        loaderColor: '#888',
         sliderColor: '#1cb954',
+        sliderHandleColor: '#fff',
+        sliderTrackColor: '#3d3d3d',
+        sliderHeight: 7,
         trackArtistColor: '#999',
         trackNameColor: '#fff'
       }}

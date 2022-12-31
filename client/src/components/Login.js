@@ -4,9 +4,9 @@ const AUTH_URL = `https://accounts.spotify.com/authorize?client_id=${process.env
 
 export default function Login() {
   return (
-    <div className="w-full min-h-screen bg-gray-700 flex justify-center items-center">
+    <div className="w-full min-h-screen bg-gradient-to-b from-black to-[#2c2e31] flex justify-center items-center">
       <a href={AUTH_URL}>
-        <button className="py-3 px-6 bg-green-400 hover:bg-green-500 text-white font-medium uppercase rounded-full transition-all ease-in duration-300">
+        <button className="py-3 px-6 bg-green-500 hover:bg-green-400 text-white font-medium uppercase rounded-full drop-shadow-lg transition-all ease-in duration-300">
           Login with Spotify
         </button>
       </a>

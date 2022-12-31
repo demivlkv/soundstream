@@ -2,10 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Jost:wght@100;200;300;400;500;600&display=swap');
 
 @layer base {
   body {
     @apply font-['Jost'] text-base md:text-lg;
+  }
+
+  h1 {
+    @apply font-['Comfortaa'] font-bold text-slate-500 text-4xl md:text-5xl lowercase tracking-tighter;
   }
 }
