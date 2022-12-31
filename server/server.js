@@ -1,9 +1,12 @@
 require('dotenv').config();
 const express = require('express');
+const path = require('path');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const SpotifyWebApi = require('spotify-web-api-node');
 const lyricsFinder = require('lyrics-finder');
+
+const PORT = process.env.PORT || 3001;
 
 const app = express();
 app.use(cors());
@@ -60,4 +63,12 @@ app.get('/lyrics', async (req, res) => {
   res.json({ lyrics });
 });
 
-app.listen(3001);
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../client/build')));
+}
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
+});
+
+app.listen(PORT, () => console.log(`🌎 Now listening on port ${PORT}`));
